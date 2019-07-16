@@ -63,7 +63,7 @@ class BahaarWaveEmulation {
                     my_info['pos'] = player.loc.clone();
                     my_info['w'] = player.loc.w;
 
-                    dispatch.send('S_SPAWN_NPC', 10, Object.assign({}, {
+                    dispatch.send('S_SPAWN_NPC', 11, Object.assign({}, {
                         gameId: 420133769,
                         templateId: 2000,
                         huntingZoneId: 444,
