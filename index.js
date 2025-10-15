@@ -37,7 +37,7 @@ const spawn_wave_delay = 0;
 
 class BahaarWaveEmulation {
     constructor(dispatch) {
-        //const ping = dispatch.require.ping;
+        // const ping = dispatch.require.ping;
         const { player } = dispatch.require.library;
 
         let my_info = {
@@ -99,7 +99,7 @@ class BahaarWaveEmulation {
                         dest: my_info['pos']
                     };
                     dispatch.send('S_ACTION_END', 5, e)
-                    dispatch.send('S_ACTION_STAGE', 8, e);
+                    dispatch.send('S_ACTION_STAGE', 9, e);
                     setTimeout(()=> {
                         dispatch.send('S_ACTION_END', 5, e)
                     }, 5000);
@@ -115,7 +115,7 @@ class BahaarWaveEmulation {
         });
 
         function send_action_stage(e, stage) {
-            dispatch.send('S_ACTION_STAGE', 8, Object.assign({}, e, my_info['pos'], {
+            dispatch.send('S_ACTION_STAGE', 9, Object.assign({}, e, my_info['pos'], {
                 w: my_info['w'],
                 stage
             }));
@@ -150,16 +150,16 @@ class BahaarWaveEmulation {
 
                 // get the wave array
                 const wave_array = wave_data[e.skill.id % 50]['anim'];
-                //const projectile_array = wave_data[e.skill.id % 50]['wave'];
+                const projectile_array = wave_data[e.skill.id % 50]['wave'];
 
                 // get initial wave delay (minus ping and jitter)
-                let delay = wave_array[0] // - ping.ping - ping.jitter;
+                let delay = wave_array[0]; // - ping.ping - ping.jitter;
 
                 for(let stage = 1; stage < wave_array.length; stage++) {
                     const wave_delay = wave_array[stage];
                     
                     setTimeout(send_action_stage, delay, e, stage);
-                    //if(projectile_array[stage]) setTimeout(send_spawn_projectile, delay + projectile_array[stage][0], e, projectile_array[stage][1]);
+                    if(projectile_array[stage]) setTimeout(send_spawn_projectile, delay + projectile_array[stage][0], e, projectile_array[stage][1]);
 
                     delay += wave_delay;
                 }
@@ -179,10 +179,10 @@ class BahaarWaveEmulation {
             if(e.zone == 9044 && !my_info['hooks'].length) enable();
             else if (e.zone != 9044) disable();
         }
-        //my_info['load_topo_hook'] = dispatch.hook('S_LOAD_TOPO', 3, s_load_topo);
+        my_info['load_topo_hook'] = dispatch.hook('S_LOAD_TOPO', 3, s_load_topo);
 
         function enable() {
-            add_hook('S_ACTION_STAGE', 8, {order: 100}, s_action_stage);
+            add_hook('S_ACTION_STAGE', 9, {order: 100}, s_action_stage);
             //add_hook('S_SPAWN_PROJECTILE', 5, s_spawn_projectile);
         }
 

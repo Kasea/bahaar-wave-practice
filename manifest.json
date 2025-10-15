@@ -1,8 +1,9 @@
 {
     "files": {
-        "index.js": "80db51068a77115c574eba99688945e3494d99df00ddfaf6e4d2f751b69f241d",
-        "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "README.md": "4c8144a78de5dbca192c73ed95658c30ecac70fd8542bb213ecd37f072c85ed5"
+        "index.js": "17fc142892eddf81d2b0389d008c631b874f739fa5cdd11df43ca5e24bad18c1",
+        "LICENSE": "e67e8b4a10ada65c0b1e7ff436b74c7d3dbe97bc68969b74714b3549d00dfa08",
+        "module.json": "cf3d6e6d42eeb86f8f0a61bc7001cc500a6252ebbf38143f611c49532f9960cf",
+        "README.md": "4c53465f97a7be432610a31239e8b7ee14ec98b449384cf1a93cb0f1d93a30fe"
     },
     "defs": {}
 }
